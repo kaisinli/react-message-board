@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 const SinglePostBox = (props) => {
-    let message, user
+    let message 
     return (
         <div id="main-container">
             <p>{message}</p>
