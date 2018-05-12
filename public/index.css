@@ -1,0 +1,45 @@
+html, body {
+    margin: 0
+}
+
+body {
+    padding: 30px; 
+}
+
+#main-container {
+    width: 70%;
+        margin: 25px auto;
+
+}
+
+#main-title {
+    margin: 25px auto;
+    width: 50%;
+    border: 3px solid lightseagreen;
+    border-radius: 15px;
+    padding: 10px;
+    text-align: center;
+    font-weight: 600;
+}
+
+button {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.summary-button {
+    width: 2.8em;
+}
+
+select, input {
+    width: 100%;
+    padding: 50px;
+    margin-bottom: 3%
+}
+
+.required:before { 
+    content:" *"; 
+    color: red;
+}
+
+
