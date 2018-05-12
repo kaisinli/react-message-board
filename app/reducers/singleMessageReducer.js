@@ -2,6 +2,7 @@
 
 //----------------------------------------< initial state >------------------------------------------
 const messagseInitialState = {
+    id: 0,
     title: '',
     message: '',
     user: '',
@@ -15,11 +16,13 @@ const CREATE_COMMENT = 'CREATE_COMMENT';
 
 //----------------------------------------< action creator >------------------------------------------
 
-export const createMessage = (title, message, user) => ({
+export const createMessage = (title, message, user, time, id) => ({
     type: CREATE_MESSAGE,
     title,
     message,
-    user
+    user, 
+    time, 
+    id
 })
 
 export const createComment = (comment) => ({
@@ -27,11 +30,11 @@ export const createComment = (comment) => ({
     comment
 })
 
-//----------------------------------------< dispatch >------------------------------------------
-export const postMessage = (title, message, user) =>
-    dispatch => dispatch(createMessage(title, message, user))
+//----------------------------------------< thunk creators >------------------------------------------
+export const createNewMessage = (title, message, user, time, id) =>
+    dispatch => dispatch(createMessage(title, message, user, time, id))
 
-export const postComment = (comment) =>
+export const createNewComment = (comment) =>
     dispatch => dispatch(createComment(comment))
 
 //----------------------------------------< reducer >------------------------------------------
@@ -39,6 +42,7 @@ export default (state = messagseInitialState, action) => {
     switch (action.type) {
         case CREATE_MESSAGE:
             state = Object.assign({}, state, {
+                id: action.id,
                 title: action.title,
                 message: action.message,
                 user: action.user,

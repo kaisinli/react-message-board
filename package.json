@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/kaisinli/multipage-form#readme",
   "dependencies": {
+    "async": "^2.6.0",
     "axios": "^0.17.1",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",

@@ -21,8 +21,8 @@ export const addNewMessage = (message) => ({
 })
 
 //----------------------------------------< dispatch >------------------------------------------
-export const postMessage = (newMessage) =>
-    dispatch => dispatch(postMessage(newMessage))
+export const postNewMessage = (newMessage) =>
+    dispatch => dispatch(addNewMessage(newMessage))
 
 //----------------------------------------< reducer >------------------------------------------
 export default (state = messagseInitialState, action) => {
@@ -31,7 +31,7 @@ export default (state = messagseInitialState, action) => {
             return state;
         case ADD_NEW_MESSAGE:
             state = Object.assign({}, state);
-            state.message.push(action.message);
+            state.messages.push(action.message);
             return state;
         default:
             return state;
