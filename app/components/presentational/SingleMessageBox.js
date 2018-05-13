@@ -1,26 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
 const SingleMessageBox = (props) => {
-  const messages = props.messages;
+  const msg = props.msg;
   return (
-    <div id="main-container">
-      {
-        messages.map(eachMessage => (
-          <div>
-            <p><span>{eachMessage.message}</span></p>
-          </div>
-        ))
-      }
+    <div>
+      <p><span>{msg.message}</span></p>
+      <p><span>{msg.user} {msg.time}</span></p>
     </div>
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    messages: state.messages.messages
-  }
-}
-
-export default connect(mapStateToProps, null)(SingleMessageBox)
+export default SingleMessageBox

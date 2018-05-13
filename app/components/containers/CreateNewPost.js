@@ -2,8 +2,8 @@ import React from 'react';
 import async from 'async';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { createNewMessage } from '../../reducers/singleMessageReducer';
-import { postNewMessage } from '../../reducers/allMessagesReducer'
+import { postNewMessage } from '../../reducers/allMessagesReducer';
+import { browserHistory } from 'react-router';
 
 class CreateNewPost extends React.Component {
     constructor(props) {
@@ -13,13 +13,14 @@ class CreateNewPost extends React.Component {
             message: props.message,
             user: props.user,
             time: props.time,
-            id: props.id
+            id: props.id,
+            comments: []
         }
-
         this.submitHandler = this.submitHandler.bind(this);
     }
 
     submitHandler(event) {
+        console.log('HISTORY', browserHistory)
         event.preventDefault();
         let target = event.target;
         let allMessages = this.props.messages;
@@ -27,12 +28,11 @@ class CreateNewPost extends React.Component {
             message = target.message.value,
             user = target.user.value,
             time = `${(new Date).getHours()}:${(new Date).getMinutes()}`,
-            id = allMessages ? allMessages.length + 1 : 1;
+            id = allMessages ? allMessages.length + 1 : 1,
+            comments = [];
 
-        let newMsg = new Promise((resolve, reject)=>{
-            console.log('hihihihi', this)
-            resolve(this.props.createNewMessage(title, message, user, time, id))
-        })
+        this.props.postNewMessage({ title, message, user, time, id, comments });
+        browserHistory.replace({ pathname: '/' })
     }
 
     render() {
@@ -68,17 +68,11 @@ class CreateNewPost extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        messages: state.messages.messages,
-        title: state.singleMessage.title,
-        message: state.singleMessage.message,
-        user: state.singleMessage.user,
-        time: state.singleMessage.time,
-        singleMessage: state.singleMessage
+        messages: state.messages.messages
     }
 }
 
 const mapDispatchToProps = {
-    createNewMessage,
     postNewMessage
 }
 

@@ -30,9 +30,11 @@ export default (state = messagseInitialState, action) => {
         case FETCH_ALL_MESSAGES:
             return state;
         case ADD_NEW_MESSAGE:
-            state = Object.assign({}, state);
-            state.messages.push(action.message);
-            return state;
+            return Object.assign(
+                {},
+                state,
+                { messages: state.messages.concat(action.message) }
+            );
         default:
             return state;
     }
