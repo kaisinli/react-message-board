@@ -8,30 +8,23 @@ import { browserHistory } from 'react-router';
 class CreateNewPost extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            title: props.title,
-            message: props.message,
-            user: props.user,
-            time: props.time,
-            id: props.id,
-            comments: []
-        }
+
         this.submitHandler = this.submitHandler.bind(this);
     }
 
     submitHandler(event) {
-        console.log('HISTORY', browserHistory)
         event.preventDefault();
         let target = event.target;
         let allMessages = this.props.messages;
+        console.log(allMessages)
         let title = target.title.value,
             message = target.message.value,
             user = target.user.value,
-            time = `${(new Date).getHours()}:${(new Date).getMinutes()}`,
-            id = allMessages ? allMessages.length + 1 : 1,
+            timestamp = new Date,
+            id = allMessages ? (allMessages.length + 1) : 1,
             comments = [];
 
-        this.props.postNewMessage({ title, message, user, time, id, comments });
+        this.props.postNewMessage({ title, message, user, timestamp, id, comments });
         browserHistory.replace({ pathname: '/' })
     }
 
