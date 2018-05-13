@@ -16,7 +16,7 @@ class CreateNewPost extends React.Component {
         event.preventDefault();
         let target = event.target;
         let allMessages = this.props.messages;
-        console.log(allMessages)
+
         let title = target.title.value,
             message = target.message.value,
             user = target.user.value,
@@ -40,7 +40,7 @@ class CreateNewPost extends React.Component {
                         type="text"
                         required />
                     <label className="required">Message:</label>
-                    <input
+                    <textarea
                         className="form-control"
                         name="message"
                         type="text"
