@@ -10,20 +10,24 @@ const SingleMessageBox = (props) => {
 
   let minute = msg.timestamp.getMinutes();
   minute = hour > 12 ? `${minute}pm` : `${minute}am`;
-  
+
   return (
-    <div id = "single-post-container">
+    <div id="single-post-container">
       <div>
-        <p><span>{msg.message}</span></p>
-        <p>Posted by: {msg.user} Last Update:
-      {msg.timestamp.getUTCMonth() + 1}/
-      {msg.timestamp.getUTCDate()}/
-      {JSON.stringify(msg.timestamp.getFullYear()).slice(2)}
-          @{hour}:{minute}</p>
+        <p id="post-msg"><span>{msg.message}</span></p>
+        <div id="post-user">
+          <p >Posted by: {msg.user}</p>
+        </div>
+        <div id="post-time">
+          <p>
+            Last Update:
+            {msg.timestamp.getUTCMonth() + 1}/
+            {msg.timestamp.getUTCDate()}/
+            {JSON.stringify(msg.timestamp.getFullYear()).slice(2)} @ {hour}:{minute}
+          </p>
+        </div>
       </div>
-      <div>
-        <Link to={`/posts/${msg.id}`}>View Post</Link>
-      </div>
+      <Link to={`/posts/${msg.id}`}>View Post</Link>
     </div>
   )
 }

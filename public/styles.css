@@ -1,0 +1,67 @@
+body {
+    height: 100%;
+    width: 100%;
+    padding: 5%;
+}
+
+#main-container{
+    padding: 2%;
+    text-align: center;
+    border-style: dotted;
+    height: 100%;
+    width: 100%;
+}
+
+#main-title{
+    padding: 1%;
+    font-size: 5vh
+}
+
+#no-posts-note{
+    padding: 10%;
+}
+
+#new-post-container{
+    border-style: dotted;
+    padding: 2%;
+}
+
+#new-post-heading{
+    font-size: 4vh;
+    padding: 1%;
+}
+
+#new-post-form input{
+    height: 5vh;
+    margin-bottom: 5%;
+}
+
+#new-post-form textarea{
+    height: 15vh;
+    margin-bottom: 5%;
+}
+
+#new-post-form label{
+    font-size: 2vh;
+    margin-bottom: 0.5%;
+    margin-top: 3%;
+}
+
+#new-post-form button{
+    font-size: 2vh;
+    margin: 3%
+}
+
+#single-post-container{
+    text-align: left;
+    border-style: solid;
+    padding: 2%
+}
+
+#post-msg{
+    font-size: 12px;
+}
+
+#post-data{
+    font-size: 8px;
+}
