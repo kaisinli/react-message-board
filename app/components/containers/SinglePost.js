@@ -8,44 +8,58 @@ import { postNewComment } from '../../reducers/allMessagesReducer';
 class SinglePost extends React.Component {
     constructor(props) {
         super(props)
+        const id = props.params.id;
+        const post = props.messages[id-1]
+
+        this.state = {
+            id,
+            title: post.title,
+            message: post.message,
+            timestamp: post.timestamp,
+            user: post.user,
+            comments: post.comments
+        };
+
         this.submitHandler = this.submitHandler.bind(this);
     }
-    
+
     submitHandler(event) {
         event.preventDefault();
-
-        console.log('PROPS', this.props)
 
         let target = event.target;
         let comment = target.comment.value,
             user = target.user.value,
-            id = this.props.params.id,
-            cmtLength = this.props.messages[id-1].comments.length,
-            cmtId = cmtLength ? (cmtLength + 1) : 1;
+            id = this.state.id,
+            cmtId = this.state.comments.length ? (this.state.comments.length + 1) : 1;
+            console.log('COMMENT LENGTH', cmtId)
 
         this.props.postNewComment({ id, user, comment, cmtId });
+        
+        this.setState(
+            (prevState, props) => {
+                return { comments: prevState.comments.concat({ id: cmtId, user, comment }) }
+            }
+        )
     }
 
     render() {
-        const post = this.props.messages[this.props.params.id - 1]
-
+        const post = this.state;
         let hour = post.timestamp.getHours();
-        let parsedHour = hour > 12 ? `${hour - 12}` : hour === 0 ? '12' : `${hour}`;
+        hour = hour > 12 ? `${hour - 12}` : hour === 0 ? '12' : `${hour}`;
 
         let minute = post.timestamp.getMinutes();
         minute = hour > 12 ? `${minute}pm` : `${minute}am`;
-
 
         return (
             <div>
                 <Link to='/'><button className="btn btn-secondary">Back to Posts</button></Link>
                 <h3>{post.title}</h3>
-                <p>By: {post.user} on {parsedHour}:{minute}</p>
+                <p>By: {post.user} on {hour}:{minute}</p>
                 <p>{post.message}</p>
                 <h4>Responses</h4>
                 {post.comments.length > 0 && post.comments.map(cmt => <SingleCommentBox cmt={cmt} key={cmt.id} />)}
                 <div>
-                    <form onSubmit = {this.submitHandler} id="new-comment-form">
+                    <form id="new-comment-form" onSubmit={this.submitHandler}>
                         <label className="required">Message:</label>
                         <textarea
                             className="form-control"

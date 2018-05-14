@@ -30,9 +30,9 @@ class CreateNewPost extends React.Component {
 
     render() {
         return (
-            <div>
-                <h3>Create a new post</h3>
-                <form onSubmit={this.submitHandler} id="new-post-form">
+            <div id = "new-post-container">
+                <h3 id = "new-post-heading">Create a new post</h3>
+                <form id = "new-post-form" onSubmit={this.submitHandler} id="new-post-form">
                     <label className="required">Title:</label>
                     <input
                         className="form-control"

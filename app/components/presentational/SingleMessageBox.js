@@ -12,7 +12,7 @@ const SingleMessageBox = (props) => {
   minute = hour > 12 ? `${minute}pm` : `${minute}am`;
   
   return (
-    <div>
+    <div id = "single-post-container">
       <div>
         <p><span>{msg.message}</span></p>
         <p>Posted by: {msg.user} Last Update:

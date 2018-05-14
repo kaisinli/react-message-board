@@ -52,6 +52,7 @@ export default (state = messagseInitialState, action) => {
             );
         case ADD_NEW_COMMENT:
             let newState = Object.assign({}, state);
+            console.log('ACTION', action)
             newState.messages[action.id - 1].comments.push({ id: action.cmtId, user: action.user, comment: action.comment });
             return newState
         default:
