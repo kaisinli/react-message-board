@@ -44,24 +44,57 @@ body {
 #new-post-form label{
     font-size: 2vh;
     margin-bottom: 0.5%;
-    margin-top: 3%;
 }
 
-#new-post-form button{
+button{
     font-size: 2vh;
     margin: 3%
 }
 
-#single-post-container{
+.single-message-container{
     text-align: left;
     border-style: solid;
     padding: 2%
 }
 
 #post-msg{
-    font-size: 12px;
+    font-size: 16px;
 }
 
 #post-data{
-    font-size: 8px;
+    font-size: 9px;
+}
+
+#post-user, #post-time{
+    padding-left: 0;
+    padding-right: 0
+}
+
+#post-user {
+    text-align: left;
+}
+
+#post-time {
+    text-align: right;
+}
+
+.single-post-container {
+    text-align: left;
+    border-style: dotted;
+    padding: 2%
+}
+
+.single-comment-container{
+    text-align: left;
+    border-bottom: dotted;
+    padding: 2%;
+    font-size: 10px;
+}
+
+#new-comment-form{
+    margin-top:5%;
+}
+
+.single-post-message{
+    margin-bottom: 5%
 }

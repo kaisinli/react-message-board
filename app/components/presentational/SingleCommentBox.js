@@ -6,8 +6,8 @@ const SingleCommentBox = (props) => {
 
     return (
         <div>
-            <div>
-                <p><span>{cmt.user}</span></p>
+            <div className = "single-comment-container">
+                <b><span>{cmt.user}</span></b>
                 <p><span>{cmt.comment}</span></p>
             </div>
         </div>
