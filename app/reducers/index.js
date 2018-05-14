@@ -5,5 +5,4 @@ import allMessagesReducer from './allMessagesReducer';
 
 export default combineReducers({
   messages: allMessagesReducer
-  //singleMessage: singleMessageReducer
 });
