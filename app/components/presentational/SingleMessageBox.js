@@ -6,7 +6,7 @@ const SingleMessageBox = (props) => {
   const msg = props.msg;
 
   let hour = msg.timestamp.getHours(),
-      parsedHour = hour > 12 ? `${hour - 12}` : hour === 0 ? '12' : `${hour}`;
+    parsedHour = hour > 12 ? `${hour - 12}` : hour === 0 ? '12' : `${hour}`;
 
   let minute = msg.timestamp.getMinutes();
   minute = hour > 12 ? `${minute}pm` : `${minute}am`;
@@ -18,6 +18,9 @@ const SingleMessageBox = (props) => {
         <div className="row">
           <div className="col" id="post-user">
             <p >Posted by: {msg.user}</p>
+          </div>
+          <div className="col" id="post-comments-num">
+            <p>{`${msg.comments.length}`} comments</p>
           </div>
           <div className="col" id="post-time">
             <p>
